@@ -1,0 +1,10 @@
+{{ form_start(form, {'attr': {'class': 'col s12'}}) }}
+<div class="row">
+<div class="input-field col s12">
+<i class="material-icons prefix">message</i>
+{{ form_widget(form.message, {'attr': {'data-length': '600'}}) }}
+{{ form_label(form.message, 'Type your message:') }}
+<input type="submit" class="btn btn-primary avatarization mx-auto" value="Send"/>
+</div>
+</div>
+{{ form_end(form) }}

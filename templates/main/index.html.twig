@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<section>
+   <div class="col s12 m2">
+      <div class="container">
+         <div id="main-content" class="row col s12 z-depth-4" style="margin-top: 15%;">
+            {{ include('main/_form.html.twig') }}
+         </div>
+         {% for full_path in app.session.flashbag().get('success') %}
+         <p class="center-align">
+         <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Show your URL</a>
+         </p>
+         <!-- Modal Structure -->
+         <div id="modal1" class="modal">
+            <div class="modal-content">
+               <h4>Your secret URL</h4>
+               <textarea id="secret_message" class="materialize-textarea" readonly>{{full_path}}</textarea>
+            </div>
+            <div class="modal-footer">
+               <button onclick="copyToClipboard()" class="waves-effect waves-light btn modal-trigger  blue darken-4">Copy to the clipboard</button>
+               <button class="modal-close waves-effect waves-light btn modal-trigger blue-grey darken-1">Close</button>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+</section>
+{% endblock %}
