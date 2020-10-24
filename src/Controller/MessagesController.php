@@ -18,7 +18,7 @@ use App\Repository\MessageRepository;
 /**
  * @Route("/message")
  */
-class MainController extends AbstractController
+class MessagesController extends AbstractController
 {
     private $session;
     private $urlHelper;
@@ -52,7 +52,7 @@ class MainController extends AbstractController
             return $this->redirectToRoute('main');
         }
 
-        return $this->render('main/index.html.twig', [
+        return $this->render('message/index.html.twig', [
             'message' => $message,
             'form' => $form->createView(),
         ]);
@@ -70,7 +70,7 @@ class MainController extends AbstractController
         #$message->setStatus(true);
         $entityManager->remove($message);
         $entityManager->flush();
-        return $this->render('main/show_message.html.twig', [
+        return $this->render('message/show_message.html.twig', [
             'message' => $message,
         ]);
     }

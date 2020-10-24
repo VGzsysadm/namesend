@@ -4,7 +4,7 @@
    <div class="col s12 m2">
       <div class="container">
          <div id="main-content" class="row col s12 z-depth-4" style="margin-top: 15%;">
-            {{ include('main/_form.html.twig') }}
+            {{ include('message/_form.html.twig') }}
          </div>
          {% for full_path in app.session.flashbag().get('success') %}
          <p class="center-align">
