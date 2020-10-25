@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.7",
         "paragonie/halite": "4",
         "phpdocumentor/reflection-docblock": "^5.1",
+        "phpseclib/phpseclib": "~2.0",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",

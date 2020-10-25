@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\UrlHelper;
 
 use App\Service\Randomize;
-
+use App\Security\Datasec;
 use App\Entity\Message;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
@@ -31,7 +31,7 @@ class MessagesController extends AbstractController
     /**
      * @Route("/new", name="main", methods={"GET","POST"})
      */
-    public function index(Request $request, Randomize $randomize): Response
+    public function index(Request $request, Randomize $randomize, Datasec $libsec): Response
     {
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
@@ -43,8 +43,8 @@ class MessagesController extends AbstractController
             $message->setUrl($randomUrl);
             $messageBody = $form->getData()->getMessage();
             $brbmessage = nl2br($messageBody);
-            #$hash = password_hash($brbmessage, PASSWORD_DEFAULT);
-            $message->setMessage($brbmessage);
+            $encrypted_message = $libsec->encrypt($brbmessage);
+            $message->setMessage($encrypted_message);
             $entityManager->persist($message);
             $entityManager->flush();
             $full_path = $this->urlHelper->getAbsoluteUrl($message->getUrl());
@@ -60,14 +60,14 @@ class MessagesController extends AbstractController
     /**
      * @Route("/{url}", name="people_show", methods={"GET","POST"})
      */
-    public function get_message(Request $request, MessageRepository $message, $url): Response
+    public function get_message(Request $request, MessageRepository $message, $url, Datasec $libsec): Response
     {
         $url = $request->attributes->get('url');
         $entityManager = $this->getDoctrine()->getManager();
         $message = $entityManager->getRepository(Message::class)->findOneBy(['url' => $url]);
-        #$message->setMessage("0");
-        #$message->setUrl("0");
-        #$message->setStatus(true);
+        $encrypted_message = $message->getMessage();
+        $decrypted_message = $libsec->decrypt($encrypted_message);
+        $message->setMessage($decrypted_message);
         $entityManager->remove($message);
         $entityManager->flush();
         return $this->render('message/show_message.html.twig', [
