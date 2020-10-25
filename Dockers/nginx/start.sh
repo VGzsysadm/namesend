@@ -1,6 +1,10 @@
 #!/bin/sh
 cd /var/www/namesend && composer install
-mv /root/.env /var/www/namesend/.env && composer dump-env prod
+mv /root/.env /var/www/namesend/.env && mv /root/doctrine.yaml /var/www/namesend/config/packages/doctrine.yaml && composer dump-env prod
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
+chmod -R 777 /var/www/namesend/var/cache/prod
+chown -R nginx. /var/www/namesend/var/cache/prod
 
 php-fpm -D
 status=$?
