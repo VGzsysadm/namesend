@@ -109,7 +109,7 @@
         "version": "v4.0.0"
     },
     "php": {
-        "version": "7.4"
+        "version": "7.3"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
