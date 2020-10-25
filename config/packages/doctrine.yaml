@@ -1,5 +1,12 @@
 doctrine:
     dbal:
+        dbname: DB_NAME
+        host: DB_HOST
+        port: DB_PORT
+        user: DB_USER
+        password: DB_PWD
+        driver: DB_DRIVER
+
         url: '%env(resolve:DATABASE_URL)%'
 
         # IMPORTANT: You MUST configure your server version,
