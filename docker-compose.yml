@@ -5,7 +5,7 @@ services:
         context: Dockers\nginx
         dockerfile: Dockerfile
         args:
-          - APP_ENV=PROD
+          - APP_ENV=prod
           - DB_HOST=mysql-db
           - DB_USER=root
           - DB_PWD=root
