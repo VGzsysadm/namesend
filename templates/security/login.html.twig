@@ -14,8 +14,8 @@
       <div class="card-panel z-depth-5">
          <div class="row margin">
             <div class="col s12 m12 l12 center">
-               <img src="https://raw.githubusercontent.com/VGzsysadm/sysadm.es-public-repository/master/new-1-1024x131.jpg"
-                  alt="" class="responsive-img circle" style="width:1024px;">
+               <img src="{{ asset('img/3326308b-c8a9-4eb4-8317-510bda55519d_200x200.png') }}"
+                  alt="" class="responsive-img" style="width:200px;">
                <p class="h3 mb-3 font-weight-normal">{% trans %}Please sign in{% endtrans %}</p>
             </div>
          </div>
@@ -49,8 +49,8 @@
                style="width:100%; background-color: #ff4081;">{% trans %}Sign in{% endtrans %}</button>
          </div>
          <div class="" style="font-size:14px;"><br>
-            <a href="" class="left">Register Now!</a>
-            <a href="" class="right ">Forgot Password?</a>
+            <a href="{{ path('app_register') }}" class="left">Don't have an account? Register Now!</a>
+            <a href="" class="right ">You lost your password?</a>
          </div>
          <br>
       </div>

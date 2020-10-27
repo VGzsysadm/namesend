@@ -6,16 +6,54 @@
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
-
-    <h1>Register</h1>
-
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+   {% if app.user %}
+   <div class="mb-3">
+      You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+   </div>
+   {% endif %}
+   <div class="container">
+      <div class="card-panel z-depth-5">
+         <div class="row margin">
+            <div class="col s12 m12 l12 center">
+               <img src="{{ asset('img/3326308b-c8a9-4eb4-8317-510bda55519d_200x200.png') }}"
+                  alt="" class="responsive-img" style="width:200px;">
+               <p class="h3 mb-3 font-weight-normal">{% trans %}Sign up{% endtrans %}</p>
+            </div>
+         </div>
+         <div class="col s12 m12 l12">
+            <div class="input-field">
+               <i class="material-icons prefix">person</i>
+               {{ form_widget(registrationForm.email) }}
+               {{ form_label(registrationForm.email, 'Email') }}
+            </div>
+         </div>
+         <div class="col m12 l12">
+            <div class="input-field">
+               <i class="material-icons prefix">lock</i>
+               {{ form_widget(registrationForm.plainPassword, {label: 'Password'}) }}
+               {{ form_label(registrationForm.plainPassword, 'Password') }}
+            </div>
+         </div>
+         <div class="left">
+            <p>
+               <label>
+               {{ form_widget(registrationForm.agreeTerms, {'attr': {'type': 'checkbox'}}) }}
+               <span>Agree terms</span>
+               </label>
+            </p>
+         </div>
+         <br><br>
+         <div class="center">
+            <button type="submit" 
+               class="btn waves-effect waves-light " 
+               style="width:100%; background-color: #ff4081;">{% trans %}Sign up{% endtrans %}</button>
+         </div>
+         <div class="" style="font-size:14px;"><br>
+            <a href="{{ path('app_login') }}" class="left">Have already an account? Sign in</a>
+         </div>
+         <br>
+      </div>
+   </div>
+{{ form_end(registrationForm) }}
 {% endblock %}

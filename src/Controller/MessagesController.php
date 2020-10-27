@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\UrlHelper;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use App\Service\Randomize;
 use App\Security\Datasec;
@@ -62,16 +63,25 @@ class MessagesController extends AbstractController
      */
     public function get_message(Request $request, MessageRepository $message, $url, Datasec $libsec): Response
     {
-        $url = $request->attributes->get('url');
-        $entityManager = $this->getDoctrine()->getManager();
-        $message = $entityManager->getRepository(Message::class)->findOneBy(['url' => $url]);
-        $encrypted_message = $message->getMessage();
-        $decrypted_message = $libsec->decrypt($encrypted_message);
-        $message->setMessage($decrypted_message);
-        $entityManager->remove($message);
-        $entityManager->flush();
-        return $this->render('message/show_message.html.twig', [
-            'message' => $message,
-        ]);
+        try{
+            $url = $request->attributes->get('url');
+            $entityManager = $this->getDoctrine()->getManager();
+            $message = $entityManager->getRepository(Message::class)->findOneBy(['url' => $url]);
+            if ( !$message ) {
+                throw $this->createNotFoundException('This message doesnt exist');
+            }
+            $encrypted_message = $message->getMessage();
+            $decrypted_message = $libsec->decrypt($encrypted_message);
+            $message->setMessage($decrypted_message);
+            $entityManager->remove($message);
+            $entityManager->flush();
+            return $this->render('message/show_message.html.twig', [
+                'message' => $message,
+            ]);
+        }
+        catch(\Exception $e){
+            error_log($e->getMessage());
+            throw $this->createNotFoundException('This message doesnt exist');
+        }
     }
 }

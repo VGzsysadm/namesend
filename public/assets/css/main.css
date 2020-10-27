@@ -1,3 +1,6 @@
 .materialize-textarea{
     min-height: 8rem!important;
 }
+.quote-rs{
+    float: left;
+}
