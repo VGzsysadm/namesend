@@ -21,7 +21,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 WORKDIR /var/www/
 RUN rm -rf * ; git clone https://github.com/VGzsysadm/namesend.git
 RUN mkdir -p /run/nginx
-RUN sed -i "s/APP_ENV=/APP_ENV=$APP_ENV/g" /root/.env
+RUN sed -i "s/APP_ENV=VAR_ENV/APP_ENV=$APP_ENV/g" /root/.env
 RUN sed -i "s/dbname: DB_NAME/dbname: $DB_NAME/g" /root/doctrine.yaml
 RUN sed -i "s/host: DB_HOST/host: $DB_HOST/g" /root/doctrine.yaml
 RUN sed -i "s/port: DB_PORT/port: $DB_PORT/g" /root/doctrine.yaml
