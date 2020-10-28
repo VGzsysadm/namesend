@@ -1,22 +1,43 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
 <section>
-   <div class="col s12 m2">
-      <div class="container">
-         <div id="main-content" class="row col s12 z-depth-4" style="margin-top: 15%;">
-            <div class="col s12">
-              <div class="row">
-              <div class="input-field col s12">
-              <i class="material-icons prefix">message</i>
-              <textarea id="secret_message" class="materialize-textarea" data-length="600" readonly>{{ message.message|replace({"<br />": "\n"})|raw }}</textarea>
-              <label for="message_message" class="required">Your secret message:</label>
-              <input onclick="copyToClipboard()" type="submit" class="btn btn-primary avatarization mx-auto" value="Copy to the clipboard"/>
-              </div>
-              </div>
+  <div class="col s12 m2">
+    <div class="container">
+      {% if message is not defined %}
+      <form method="post">
+        <div class="col m12 l12">
+          <div class="input-field">
+          <div class="row center-align">
+            <p class="small" class="right-align md-rs">The URL will be shown one time only.
+            </p>
+            <button class="btn waves-effect waves-light md-rs" type="submit" name="action">See your message
+              <i class="material-icons right">lock
+              </i>
+            </button>
             </div>
-         </div>
+          </div>
+        </div>
+      </form>
+      {% endif %}
+      {% if message is defined %}
+      <div id="main-content" class="row col s12 z-depth-4" style="margin-top: 15%;">
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">message
+              </i>
+              <textarea id="secret_message" class="materialize-textarea" data-length="600" readonly>{{ message.message|replace({"
+                <br />": "\n"})|raw }}
+              </textarea>
+              <label for="message_message" class="required">Your secret message:
+              </label>
+              <input onclick="copyToClipboard()" type="submit" class="btn btn-primary avatarization mx-auto" value="Copy to the clipboard"/>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
+      {% endif %}
+    </div>
+  </div>
 </section>
 {% endblock %}

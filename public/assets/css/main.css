@@ -4,3 +4,8 @@
 .quote-rs{
     float: left;
 }
+.md-rs{
+    float: none !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
