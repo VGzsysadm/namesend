@@ -33,8 +33,7 @@ class MessagesController extends AbstractController
     /**
      * @Route("/new", name="main", methods={"GET","POST"})
      */
-    public function index(Request $request, Randomize $randomize, Datasec $libsec):
-        Response
+    public function index(Request $request, Randomize $randomize, Datasec $libsec): Response
         {
             $message = new Message();
             $form = $this->createForm(MessageType::class , $message);
@@ -68,24 +67,18 @@ class MessagesController extends AbstractController
         /**
          * @Route("/{url}", name="people_show", methods={"GET","POST"})
          */
-        public function get_message(Request $request, MessageRepository $message, $url, Datasec $libsec):
-            Response
+        public function get_message(Request $request, MessageRepository $message, $url, Datasec $libsec): Response
             {
+                $url = $request->attributes->get('url');$entityManager = $this->getDoctrine()->getManager();
+                $message = $entityManager->getRepository(Message::class)->findOneBy(['url' => $url]);
+                if (!$message)
+                    {
+                        throw $this->createNotFoundException('This message doesnt exist');
+                    }
                 try
                 {
                     if ($request->isMethod('POST'))
                     {
-                        $url = $request
-                            ->attributes
-                            ->get('url');
-                        $entityManager = $this->getDoctrine()
-                            ->getManager();
-                        $message = $entityManager->getRepository(Message::class)
-                            ->findOneBy(['url' => $url]);
-                        if (!$message)
-                        {
-                            throw $this->createNotFoundException('This message doesnt exist');
-                        }
                         $encrypted_message = $message->getMessage();
                         $decrypted_message = $libsec->decrypt($encrypted_message);
                         $message->setMessage($decrypted_message);

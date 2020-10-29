@@ -1,3 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}404 Error{% endblock %}
+{% block body %}
+<section>
+   <div class="col s12 m2">
+      <div class="container">
+      <div class="center-align">
+          <h1>
+            404 - No route found for you.
+          </h1>
+           <p class="flow-text">This message never exist or probably you were to late.</p>
+           <p class="small">Let us help turning to our <a href="{{ path('main') }}">home</a></p>
+      </div>
+      </div>
+   </div>
+</section>
+{% endblock %}
