@@ -6,10 +6,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\UrlHelper;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\HttpFoundation\UrlHelper;
 
 use App\Service\Randomize;
 use App\Security\Datasec;
@@ -18,16 +18,16 @@ use App\Form\MessageType;
 use App\Repository\MessageRepository;
 
 /**
- * @Route("/message")
- */
+ * @Route("message")
+*/
 class MessagesController extends AbstractController
 {
     private $session;
     private $urlHelper;
     public function __construct(UrlHelper $urlHelper)
     {
-        $this->urlHelper = $urlHelper;
         $this->session = new Session();
+        $this->urlHelper = $urlHelper;
     }
 
     /**

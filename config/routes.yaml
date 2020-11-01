@@ -3,3 +3,9 @@ login_check:
 
 logout:
     path: /logout
+
+indice:
+    path:       /{_locale}
+    controller: App\Controller\IndexController::index
+    requirements:
+            _locale: en|es

@@ -2,14 +2,6 @@
 {% block title %}Log in!{% endblock %}
 {% block body %}
 <form method="post">
-   {% if error %}
-   <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-   {% endif %}
-   {% if app.user %}
-   <div class="mb-3">
-      You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-   </div>
-   {% endif %}
    <div class="container">
       <div class="card-panel z-depth-5">
          <div class="row margin">
@@ -17,6 +9,11 @@
                <img src="{{ asset('img/3326308b-c8a9-4eb4-8317-510bda55519d_200x200.png') }}"
                   alt="" class="responsive-img" style="width:200px;">
                <p class="h3 mb-3 font-weight-normal">{% trans %}Please sign in{% endtrans %}</p>
+               {% if error %}
+               <script>
+                  M.toast({html: '{{ error.messageKey|trans(error.messageData, 'security') }}', classes: 'alert alert-danger'});
+               </script>
+               {% endif %}
             </div>
          </div>
          <div class="col s12 m12 l12">

@@ -10,7 +10,10 @@
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
         {% block stylesheets %}{% endblock %}
         <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+        <script>
+        M.AutoInit();
+    </script>
     </head>
     <body>
     {{ include('header.html.twig') }}
@@ -18,5 +21,15 @@
     <!--Custom js-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
     {% block javascripts %}{% endblock %}
+    {% for message in app.session.flashbag().get('success') %}
+        <script>
+        M.toast({html: '{{message}}', classes: 'alert success'});
+        </script>
+    {% endfor %}
+    {% for message in app.session.flashbag().get('danger') %}
+        <script>
+        M.toast({html: '{{message}}', classes: 'alert danger'});
+        </script>
+    {% endfor %}
     </body>
 </html>

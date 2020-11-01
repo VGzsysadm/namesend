@@ -9,3 +9,12 @@
     margin-left: auto;
     margin-right: auto;
   }
+.alert {
+    font-weight: bold;
+}
+.alert-danger{
+    background-color: red;
+}
+.success{
+    background-color: green;
+}
