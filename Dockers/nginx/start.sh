@@ -5,6 +5,8 @@ php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 chmod -R 777 /var/www/namesend/var/cache/prod
 chown -R nginx. /var/www/namesend/var/cache/prod
+openssl genrsa -des3 -out /var/www/namesend/config/keys/private.key 2048
+openssl rsa -in private.key -outform PEM -pubout -out public.pub
 
 php-fpm -D
 status=$?
