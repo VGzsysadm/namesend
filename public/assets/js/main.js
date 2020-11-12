@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Dropdown.init(elems);
 });
 // CopyClipboard
-function copyToClipboard() {
-    var text = document.querySelector('#secret_message');
+function copyToClipboard(copyText) {
+    var text = document.getElementById(copyText);
     navigator.clipboard.writeText(text.value)
 }

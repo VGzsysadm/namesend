@@ -32,6 +32,16 @@ class Message
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $protection;
+
+    /**
+     * @ORM\OneToOne(targetEntity=MessagePassword::class, mappedBy="mess", cascade={"persist", "remove"})
+     */
+    private $messagePassword;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,5 +89,35 @@ class Message
     public function __construct()
     {
         $this->status = false;
+    }
+
+    public function getProtection(): ?bool
+    {
+        return $this->protection;
+    }
+
+    public function setProtection(bool $protection): self
+    {
+        $this->protection = $protection;
+
+        return $this;
+    }
+
+    public function getMessagePassword(): ?MessagePassword
+    {
+        return $this->messagePassword;
+    }
+
+    public function setMessagePassword(?MessagePassword $messagePassword): self
+    {
+        $this->messagePassword = $messagePassword;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newMess = null === $messagePassword ? null : $this;
+        if ($messagePassword->getMess() !== $newMess) {
+            $messagePassword->setMess($newMess);
+        }
+
+        return $this;
     }
 }

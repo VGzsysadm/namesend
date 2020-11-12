@@ -4,8 +4,10 @@
                   alt="" class="responsive-img" style="width:60px;"></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
+      {% if app.User != null %}
         <li><a href="sass.html">Options</a></li>
-        <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang'>Drop Me!</a></li>
+        <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang'>settings</a></li>
+      {% endif %}
       </ul>
     </div>
 </nav>
@@ -13,9 +15,10 @@
     <li><a href="sass.html">Options</a></li>
 </ul>
 <!-- Dropdown Structure -->
-<ul id='dropdown-lang' class='dropdown-content'>
+<ul id='dropdown-lang' class='dropdown-content input-field'>
   <li class="divider" tabindex="-1"></li>
   <li><a href="#!">three</a></li>
   <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+  <li class="divider" tabindex="-1"></li>
+  <li><a href="{{ path('app_logout') }}"><i class="material-icons">power_settings_new</i>Log out</a></li>
 </ul>

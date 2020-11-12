@@ -14,12 +14,19 @@
          <div id="modal1" class="modal">
             <div class="modal-content">
                <h4>Your secret URL</h4>
-               <textarea id="secret_message" class="materialize-textarea" readonly>{{full_path}}</textarea>
+               <textarea id="secret_url" class="materialize-textarea" readonly>{{full_path}}</textarea>
+               {% for password in app.session.flashbag().get('secret') %}
+               <h4>Your secret password</h4>
+               <textarea id="secret_password" class="materialize-textarea" readonly>{{ password }}</textarea>
+               {% endfor %}
             </div>
             <div class="modal-footer">
                <blockquote class="right-align quote-rs">The URL will be shown one time only.</blockquote>
-               <button onclick="copyToClipboard()" class="waves-effect waves-light btn modal-trigger  blue darken-4">Copy to the clipboard</button>
-               <button class="modal-close waves-effect waves-light btn modal-trigger blue-grey darken-1">Close</button>
+               <button href="#!" onclick="copyToClipboard('secret_url')" class="waves-effect waves-light btn blue darken-4">Copy URL</button>
+               {% for password2 in app.session.flashbag().get('secret2') %}
+               <button href="#!" onclick="copyToClipboard('secret_password')" class="waves-effect waves-light btn  blue darken-4">Copy password</button>
+               {% endfor %}
+               <button href="#!" class="modal-close waves-effect waves-light btn blue-grey darken-1">Close</button>
             </div>
          </div>
          {% endfor %}

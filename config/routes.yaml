@@ -1,8 +1,9 @@
 login_check:
     path: /login_check
 
-logout:
+app_logout:
     path: /logout
+    methods: GET
 
 indice:
     path:       /{_locale}

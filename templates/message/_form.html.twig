@@ -4,6 +4,14 @@
 <i class="material-icons prefix">message</i>
 {{ form_widget(form.message, {'attr': {'data-length': '600'}}) }}
 {{ form_label(form.message, 'Type your message:') }}
+<div class="container">
+    <div class="row">
+        <label>
+            {{ form_widget(form.protection, {'attr': {'type': 'checkbox'}}) }}
+            <span>Protec with password</span>
+        </label>
+    </div>
+</div>
 <input type="submit" class="btn btn-primary avatarization mx-auto" value="Send"/>
 </div>
 </div>
