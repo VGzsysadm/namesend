@@ -12,6 +12,8 @@
 .composer.lock
 .symfony.lock
 /migrations/
+private.key
+public.pub
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

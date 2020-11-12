@@ -18,7 +18,7 @@ use App\Service\passwordGenerator;
 use App\Security\Datasec;
 use App\Entity\Message;
 use App\Entity\User;
-use App\Entity\messagePassword;
+use App\Entity\MessagePassword;
 use App\Form\MessageType;
 use App\Repository\MessageRepository;
 
@@ -47,7 +47,7 @@ class MessagesController extends AbstractController
 
             if ($form->isSubmitted() && $form->isValid())
             {
-                $mPassword = new messagePassword();
+                $mPassword = new MessagePassword();
                 if ( $form->getData()->getProtection()== null)
                 {
                     $message->setProtection(false);
