@@ -51,12 +51,10 @@ class GoogleAuthenticator extends SocialAuthenticator
 
         $email = $googleUser->getEmail();
 
-        $user = $this->em->getRepository('App:User')
-            ->findOneBy(['email' => $email]);
-        
-        $suser = $this->em->getRepository('App:Suser')
-            ->findOneBy(['email' => $email]);
-        if (!$user) {
+        $usr = $this->em->getRepository('App:User')->findOneBy(['email' => $email]);
+        $suser = $this->em->getRepository('App:Suser')->findOneBy(['email' => $email]);
+
+        if (!$usr) {
             if (!$suser) {
             $user = new Suser();
             $user->setEmail($googleUser->getEmail());
@@ -65,9 +63,10 @@ class GoogleAuthenticator extends SocialAuthenticator
             $this->em->persist($user);
             $this->em->flush();
             }
+            return $suser;
         }
 
-        return $user;
+        return $usr;
     }
 
     /**
