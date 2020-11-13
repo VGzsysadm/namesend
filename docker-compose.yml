@@ -9,10 +9,12 @@ services:
           - DB_HOST=namesend-mysql
           - DB_USER=root
           - DB_PWD=root
-          - DB_NAME=sendme
+          - DB_NAME=namesend
           - DB_PORT=3306
           - DB_VERSION=5.7
           - DB_DRIVER=pdo_mysql
+          - GOOGLE_CLIENT_ID=YOUR_CLIENT_ID
+          - GOOGLE_CLIENT_SECRET=YOUR_SECRET
       image: php/7.4.11-fpm-alpine3.12
       ports:
         - "8084:80"

@@ -10,6 +10,8 @@
         "doctrine/doctrine-bundle": "^2.1",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
+        "knpuniversity/oauth2-client-bundle": "^2.5",
+        "league/oauth2-google": "^3.0",
         "paragonie/halite": "4",
         "phpdocumentor/reflection-docblock": "^5.1",
         "phpseclib/phpseclib": "~2.0",

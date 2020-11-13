@@ -6,6 +6,33 @@
     ],
     "aliases": [],
     "content-hash": "daef4b510d299336f5af2f2a6186e7f3",
+    "guzzlehttp/guzzle": {
+        "version": "7.2.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.4.0"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.7.0"
+    },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.20",
+            "ref": "80acc9223a205cbf5d9828fd616c82a374d281dd"
+        },
+        "files": [
+            "./config/packages/knpu_oauth2_client.yaml"
+        ]
+    },
+    "league/oauth2-client": {
+        "version": "2.6.0"
+    },
+    "league/oauth2-google": {
+        "version": "3.0.3"
+    },
     "minimum-stability": "stable",
     "packages": [
         {
@@ -7132,6 +7159,15 @@
     "plugin-api-version": "1.1.0",
     "prefer-lowest": false,
     "prefer-stable": false,
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
+    },
     "stability-flags": [],
     "symfony/twig-pack": {
         "version": "v1.0.2"

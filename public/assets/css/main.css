@@ -15,6 +15,9 @@
 .alert-danger{
     background-color: red;
 }
+.danger{
+    background-color: red;
+}
 .success{
     background-color: green;
 }
