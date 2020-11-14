@@ -1,6 +1,13 @@
 #!/bin/sh
+until nc -z -v -w30 mysql-db 3306
+do
+  echo "Waiting for database connection..."
+  sleep 5
+done
 cd /var/www/namesend && composer install
-mv /root/.env /var/www/namesend/.env && mv /root/doctrine.yaml /var/www/namesend/config/packages/doctrine.yaml && composer dump-env prod
+mv /root/.env /var/www/namesend/.env && mv /root/doctrine.yaml /var/www/namesend/config/packages/doctrine.yaml
+sed -i "s/APP_ENV=VAR_ENV/APP_ENV=prod/g" .env
+composer dump-env prod
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 chmod -R 777 /var/www/namesend/var/cache/prod

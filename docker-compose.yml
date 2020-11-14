@@ -5,7 +5,6 @@ services:
         context: Dockers/nginx
         dockerfile: Dockerfile
         args:
-          - APP_ENV=prod
           - DB_HOST=namesend-mysql
           - DB_USER=root
           - DB_PWD=root
