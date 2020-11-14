@@ -10,13 +10,17 @@ sed -i "s/APP_ENV=/APP_ENV=prod/g" .env
 composer dump-env prod
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
+touch /var/www/namesend/var/log/prod.log
 chmod -R 777 /var/www/namesend/var/cache/prod
-chmod -R 777 /var/www/namesend/var/log/prod
+chmod 777 /var/www/namesend/var/log/prod.log
 chown -R nginx. /var/www/namesend/var/
 openssl genrsa -out /var/www/namesend/config/keys/private.key 2048
 openssl rsa -in /var/www/namesend/config/keys/private.key -outform PEM -pubout -out /var/www/namesend/config/keys/public.pub
 chmod 755 /var/www/namesend/config/keys/private.key
 chmod 755 /var/www/namesend/config/keys/public.pub
+ln -sf /proc/1/fd/1 /var/www/namesend/var/log/prod.log
+ln -sf /proc/1/fd/1 /var/log/nginx/namesend_error.log
+ln -sf /proc/1/fd/1 /var/log/nginx/namesend_access.log
 
 php-fpm -D
 status=$?
