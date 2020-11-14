@@ -16,7 +16,10 @@
     </script>
     </head>
     <body>
+    <header>
     {{ include('header.html.twig') }}
+    </header>
+    <main>
     {% block body %}{% endblock %}
     <!--Custom js-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
@@ -31,6 +34,15 @@
         M.toast({html: '{{message}}', classes: 'alert danger'});
         </script>
     {% endfor %}
-    <footer>&copy; <a href="https://namesend.org" target="_blank">Namesend.org<a> {{ "now"|date("Y") }} <a href="https://github.com/VGzsysadm/namesend" target="_blank"> - pull me on GitHub</a></footer>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+          <div class="footer-copyright">
+            <div class="container">
+            &copy; <a href="https://namesend.org" target="_blank">Namesend.org<a> {{ "now"|date("Y") }} <a href="https://github.com/VGzsysadm/namesend" target="_blank"> - pull me on GitHub</a>
+            </div>
+          </div>
+        </div>
+    </footer>
     </body>
 </html>
