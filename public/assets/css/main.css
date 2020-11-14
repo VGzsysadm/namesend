@@ -21,3 +21,15 @@
 .success{
     background-color: green;
 }
+footer{
+   position:absolute;
+   bottom:0;
+   width:100%;
+   text-align: center;
+   margin-bottom: 15px;
+   
+}
+footer a {
+    text-decoration:none;
+    color: inherit;
+}

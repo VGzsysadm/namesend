@@ -99,7 +99,7 @@ class AzureAuthenticator extends SocialAuthenticator
     {
         $message = "Authentication failure, please try again.";
         $this->session->getFlashBag()->add("danger", $message);
-        #return new RedirectResponse('/');
+        return new RedirectResponse('/');
     }
 
     /**

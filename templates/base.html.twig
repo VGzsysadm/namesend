@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Namesend{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="{{ asset('assets/vendor/materialize/css/materialize.min.css') }}">
@@ -31,5 +31,6 @@
         M.toast({html: '{{message}}', classes: 'alert danger'});
         </script>
     {% endfor %}
+    <footer>&copy; <a href="https://namesend.org" target="_blank">Namesend.org<a> {{ "now"|date("Y") }} <a href="https://github.com/VGzsysadm/namesend" target="_blank"> - pull me on GitHub</a></footer>
     </body>
 </html>
