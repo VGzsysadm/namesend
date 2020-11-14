@@ -6,3 +6,9 @@ knpu_oauth2_client:
             client_secret: '%env(resolve:GOOGLE_CLIENT_SECRET)%'
             redirect_route: connect_google_check
             redirect_params: {}
+        azure:
+            type: azure
+            client_id: '%env(resolve:AZURE_CLIENT_ID)%'
+            client_secret: '%env(resolve:AZURE_CLIENT_SECRET)%'
+            redirect_route: connect_azure_check
+            redirect_params: {}

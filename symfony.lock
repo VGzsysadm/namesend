@@ -6,6 +6,9 @@
     ],
     "aliases": [],
     "content-hash": "daef4b510d299336f5af2f2a6186e7f3",
+    "firebase/php-jwt": {
+        "version": "v5.2.0"
+    },
     "guzzlehttp/guzzle": {
         "version": "7.2.0"
     },
@@ -7171,5 +7174,8 @@
     "stability-flags": [],
     "symfony/twig-pack": {
         "version": "v1.0.2"
+    },
+    "thenetworg/oauth2-azure": {
+        "version": "v2.0.0"
     }
 }

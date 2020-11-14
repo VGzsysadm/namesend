@@ -26,6 +26,7 @@ security:
                 authenticators:
                     - App\Security\AuthGuardAuthenticator
                     - App\Security\GoogleAuthenticator
+                    - App\Security\AzureAuthenticator
                 entry_point: App\Security\AuthGuardAuthenticator
             form_login:
               login_path: app_login
