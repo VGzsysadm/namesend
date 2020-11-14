@@ -111,8 +111,6 @@ class GoogleAuthenticator extends SocialAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token, $providerKey)
     {
-        $message = "Welcome";
-        $this->session->getFlashBag()->add("success", $message);
         return new RedirectResponse('/');
     }
 }

@@ -5,14 +5,16 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
       {% if app.User != null %}
-        <li><a href="#!">Options</a></li>
+        <li>Logged as, {{app.user.email}}</li>
         <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang'>settings</a></li>
       {% endif %}
       </ul>
     </div>
 </nav>
+{% if app.User != null %}
 <ul class="sidenav" id="mobile-demo">
-    <li><a href="#!">Options</a></li>
+    <li>Logged as, {{app.user.email}}</li>
+    <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang'>settings</a></li>
 </ul>
 <!-- Dropdown Structure -->
 <ul id='dropdown-lang' class='dropdown-content input-field'>
@@ -22,3 +24,4 @@
   <li class="divider" tabindex="-1"></li>
   <li><a href="{{ path('app_logout') }}"><i class="material-icons">power_settings_new</i>Log out</a></li>
 </ul>
+{% endif %}
