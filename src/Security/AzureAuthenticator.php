@@ -46,25 +46,25 @@ class AzureAuthenticator extends SocialAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         /** @var AzureUser $azureUser */
-        $azureUser = $this->getAzureClient()
-            ->fetchUserFromToken($credentials);
+        $azureUser = $this->getAzureClient()->fetchUserFromToken($credentials);
         $email = $azureUser->getUpn();
-        $usr = $this->em->getRepository('App:User')->findOneBy(['email' => $email]);
         $suser = $this->em->getRepository('App:Suser')->findOneBy(['email' => $email]);
-
-        if (!$usr) {
-            if (!$suser) {
-            $user = new Suser();
-            $user->setEmail($azureUser->getUpn());
+        if (!$suser) {
+            $user = $this->em->getRepository('App:User')->findOneBy(['email' => $email]);
+            if (!$user) {
+            $suser = new Suser();
+            $suser->setEmail($azureUser->getUpn());
             $roles[] = 'ROLE_USER';
-            $user->setRoles($roles);
-            $this->em->persist($user);
+            $suser->setRoles($roles);
+            $this->em->persist($suser);
             $this->em->flush();
+            return $suser;
             }
+            $suser = $user;
             return $suser;
         }
 
-        return $usr;
+        return $suser;
     }
 
     /**

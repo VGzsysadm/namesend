@@ -3,7 +3,6 @@
 namespace App\Security;
 
 use App\Entity\Suser;
-use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
@@ -46,27 +45,25 @@ class GoogleAuthenticator extends SocialAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         /** @var GoogleUser $googleUser */
-        $googleUser = $this->getGoogleClient()
-            ->fetchUserFromToken($credentials);
-
+        $googleUser = $this->getGoogleClient()->fetchUserFromToken($credentials);
         $email = $googleUser->getEmail();
-
-        $usr = $this->em->getRepository('App:User')->findOneBy(['email' => $email]);
         $suser = $this->em->getRepository('App:Suser')->findOneBy(['email' => $email]);
-
-        if (!$usr) {
-            if (!$suser) {
-            $user = new Suser();
-            $user->setEmail($googleUser->getEmail());
+        if (!$suser) {
+            $user = $this->em->getRepository('App:User')->findOneBy(['email' => $email]);
+            if (!$user) {
+            $suser = new Suser();
+            $suser->setEmail($googleUser->getEmail());
             $roles[] = 'ROLE_USER';
-            $user->setRoles($roles);
-            $this->em->persist($user);
+            $suser->setRoles($roles);
+            $this->em->persist($suser);
             $this->em->flush();
+            return $suser;
             }
+            $suser = $user;
             return $suser;
         }
 
-        return $usr;
+        return $suser;
     }
 
     /**
