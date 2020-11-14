@@ -28,8 +28,8 @@ RUN mkdir -p /run/nginx
 RUN sed -i "s/APP_ENV=VAR_ENV/APP_ENV=$APP_ENV/g" /root/.env
 RUN sed -i "s/GOOGLE_CLIENT_ID=/GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID/g" /root/.env
 RUN sed -i "s/GOOGLE_CLIENT_SECRET=/GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET/g" /root/.env
-RUN sed -i "s/AZURE_CLIENT_ID=/GOOGLE_CLIENT_ID=$AZURE_CLIENT_ID/g" /root/.env
-RUN sed -i "s/AZURE=/GOOGLE_CLIENT_SECRET=$AZURE_CLIENT_SECRET/g" /root/.env
+RUN sed -i "s/AZURE_CLIENT_ID=/AZURE_CLIENT_ID=$AZURE_CLIENT_ID/g" /root/.env
+RUN sed -i "s/AZURE_CLIENT_SECRET=/AZURE_CLIENT_SECRET=$AZURE_CLIENT_SECRET/g" /root/.env
 RUN sed -i "s/dbname: DB_NAME/dbname: $DB_NAME/g" /root/doctrine.yaml
 RUN sed -i "s/host: DB_HOST/host: $DB_HOST/g" /root/doctrine.yaml
 RUN sed -i "s/port: DB_PORT/port: $DB_PORT/g" /root/doctrine.yaml
