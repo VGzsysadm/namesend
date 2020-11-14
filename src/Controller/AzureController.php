@@ -31,7 +31,7 @@ class AzureController extends AbstractController
      */
     public function connectCheckAction(Request $request)
     {
-        if (!$this->getUpn()) {
+        if (!$this->getUser()) {
             return new JsonResponse(array('status' => false, 'message' => "User not found!"));
         } else {
             return $this->redirectToRoute('main');
