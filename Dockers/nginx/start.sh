@@ -6,7 +6,7 @@ do
 done
 cd /var/www/namesend && composer install
 mv /root/.env /var/www/namesend/.env && mv /root/doctrine.yaml /var/www/namesend/config/packages/doctrine.yaml
-sed -i "s/APP_ENV=VAR_ENV/APP_ENV=prod/g" .env
+sed -i "s/APP_ENV=/APP_ENV=prod/g" .env
 composer dump-env prod
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force

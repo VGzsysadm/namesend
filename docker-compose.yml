@@ -16,7 +16,7 @@ services:
           - GOOGLE_CLIENT_SECRET=YOUR_SECRET
           - AZURE_CLIENT_ID=YOUR_CLIENT_ID
           - AZURE_CLIENT_SECRET=YOUR_SECRET
-          - DOMAINNAME=domain.ltd
+          - DOMAIN_NAME=domain.ltd
       image: php/7.4.11-fpm-alpine3.12
       ports:
         - "8084:80"
