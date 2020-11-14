@@ -2,26 +2,34 @@
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><img src="{{ asset('img/3326308b-c8a9-4eb4-8317-510bda55519d_200x200.png') }}"
                   alt="" class="responsive-img" style="width:60px;"></a>
+      {% if app.User != null %}
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-      {% if app.User != null %}
-        <li>Logged as, {{app.user.email}}</li>
-        <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang'>settings</a></li>
-      {% endif %}
+        <li><a href="#!">Logged as, {{app.user.email}}</a></li>
+        <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang-desktop'>settings</a></li>
       </ul>
+      {% endif %}
     </div>
 </nav>
 {% if app.User != null %}
 <ul class="sidenav" id="mobile-demo">
-    <li>Logged as, {{app.user.email}}</li>
-    <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang'>settings</a></li>
+    <li><a href="#!">Logged as, {{app.user.email}}</a></li>
+    <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang-mobile'>settings</a></li>
 </ul>
+{% endif %}
 <!-- Dropdown Structure -->
-<ul id='dropdown-lang' class='dropdown-content input-field'>
+<ul id='dropdown-lang-desktop' class='dropdown-content input-field'>
   <li class="divider" tabindex="-1"></li>
   <li><a href="#!">three</a></li>
   <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
   <li class="divider" tabindex="-1"></li>
   <li><a href="{{ path('app_logout') }}"><i class="material-icons">power_settings_new</i>Log out</a></li>
 </ul>
-{% endif %}
+<!-- Dropdown Structure Mobile-->
+<ul id='dropdown-lang-mobile' class='dropdown-content input-field'>
+  <li class="divider" tabindex="-1"></li>
+  <li><a href="#!">three</a></li>
+  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+  <li class="divider" tabindex="-1"></li>
+  <li><a href="{{ path('app_logout') }}"><i class="material-icons">power_settings_new</i>Log out</a></li>
+</ul>
