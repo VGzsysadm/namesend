@@ -17,14 +17,16 @@ services:
           - GOOGLE_CLIENT_SECRET=YOUR_SECRET
           - AZURE_CLIENT_ID=YOUR_CLIENT_ID
           - AZURE_CLIENT_SECRET=YOUR_SECRET
+          - SERVERNAME=www.domaint domain.ltd
       image: php/7.4.11-fpm-alpine3.12
       ports:
         - "8084:80"
+        - "10443:443"
       depends_on:
         - mysql-db
       container_name: namesend-web
       volumes:
-        - /certs/domain.tld:/etc/nginx/certs/
+        - ./Dockers/certs/domain.ltd:/etc/nginx/certs/
     mysql-db:
       image: mysql
       command: --default-authentication-plugin=mysql_native_password

@@ -12,6 +12,7 @@ ARG GOOGLE_CLIENT_ID
 ARG GOOGLE_CLIENT_SECRET
 ARG AZURE_CLIENT_ID
 ARG AZURE_CLIENT_SECRET
+ARG SERVERNAME
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -25,6 +26,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 WORKDIR /var/www/
 RUN rm -rf * ; git clone https://github.com/VGzsysadm/namesend.git
 RUN mkdir -p /run/nginx
+RUN sed -i "s/server_name domain.ltd www.domain.ltd/server_name $SERVERNAME/g" /etc/nginx/conf.d/default.conf
 RUN sed -i "s/APP_ENV=VAR_ENV/APP_ENV=$APP_ENV/g" /root/.env
 RUN sed -i "s/GOOGLE_CLIENT_ID=/GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID/g" /root/.env
 RUN sed -i "s/GOOGLE_CLIENT_SECRET=/GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET/g" /root/.env
