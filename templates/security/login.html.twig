@@ -27,7 +27,7 @@
             <div class="input-field">
                <i class="material-icons prefix">lock</i>
                <label for="inputPassword">{% trans %}Password{% endtrans %}</label>
-               <input type="password" name="password" id="inputPassword" class="form-control" required>
+               <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="off" required>
                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             </div>
          </div>
