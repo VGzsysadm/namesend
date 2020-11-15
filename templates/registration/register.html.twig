@@ -45,7 +45,7 @@
             <p>
                <label>
                {{ form_widget(registrationForm.agreeTerms, {'attr': {'type': 'checkbox'}}) }}
-               <span>Agree terms</span>
+               <span><a href="{{ path('compliance') }}">Agree terms</a></span>
                </label>
             </p>
          </div>
