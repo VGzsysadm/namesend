@@ -5,7 +5,7 @@ do
   sleep 5
 done
 mkdir /etc/nginx/ssl/
-openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
+openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
 cd /var/www/namesend && composer install
 mv /root/.env /var/www/namesend/.env && mv /root/doctrine.yaml /var/www/namesend/config/packages/doctrine.yaml
 sed -i "s/APP_ENV=/APP_ENV=prod/g" .env
