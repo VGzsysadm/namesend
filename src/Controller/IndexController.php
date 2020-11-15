@@ -20,7 +20,7 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return $this->redirectToRoute('main');
+        return $this->redirectToRoute('app_login');
     }
     /**
      * @Route("/en", name="en")
