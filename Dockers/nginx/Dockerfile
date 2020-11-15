@@ -13,12 +13,16 @@ ARG GOOGLE_CLIENT_SECRET
 ARG AZURE_CLIENT_ID
 ARG AZURE_CLIENT_SECRET
 ARG DOMAIN_NAME
+ARG EFFECTIVE_DATE
+ARG PRIVACY_COMPANY
+ARG PRIVACY_WEBSITE_DOMAIN
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY ./start.sh /root
 COPY .env /root
 COPY doctrine.yaml /root
+COPY privacyPolicy.html.twig /root
 RUN chmod +x /root/start.sh
 RUN apk add nginx git
 RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
@@ -32,6 +36,9 @@ RUN sed -i "s/GOOGLE_CLIENT_ID=/GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID/g" /root/.env
 RUN sed -i "s/GOOGLE_CLIENT_SECRET=/GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET/g" /root/.env
 RUN sed -i "s/AZURE_CLIENT_ID=/AZURE_CLIENT_ID=$AZURE_CLIENT_ID/g" /root/.env
 RUN sed -i "s/AZURE_CLIENT_SECRET=/AZURE_CLIENT_SECRET=$AZURE_CLIENT_SECRET/g" /root/.env
+RUN sed -i "s/EFFECTIVE_DATE/$EFFECTIVE_DATE/g" /root/privacyPolicy.html.twig
+RUN sed -i "s/PRIVACY_COMPANY/$PRIVACY_COMPANY/g" /root/privacyPolicy.html.twig
+RUN sed -i "s/PRIVACY_WEBSITE_DOMAIN/$PRIVACY_WEBSITE_DOMAIN/g" /root/privacyPolicy.html.twig
 RUN sed -i "s/dbname: DB_NAME/dbname: $DB_NAME/g" /root/doctrine.yaml
 RUN sed -i "s/host: DB_HOST/host: $DB_HOST/g" /root/doctrine.yaml
 RUN sed -i "s/port: DB_PORT/port: $DB_PORT/g" /root/doctrine.yaml

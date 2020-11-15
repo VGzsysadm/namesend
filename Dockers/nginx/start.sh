@@ -17,6 +17,7 @@ chmod 755 /var/www/namesend/config/keys/private.key
 chmod 755 /var/www/namesend/config/keys/public.pub
 ln -sf /proc/1/fd/1 /var/log/nginx/namesend_error.log
 ln -sf /proc/1/fd/1 /var/log/nginx/namesend_access.log
+mv /root/privacyPolicy.html.twig /var/www/namesend/templates/compliance/index.html.twig
 
 php-fpm -D
 status=$?
