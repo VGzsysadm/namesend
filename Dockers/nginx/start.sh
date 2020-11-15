@@ -4,6 +4,7 @@ do
   echo "Waiting for database connection..."
   sleep 5
 done
+mkdir /etc/nginx/ssl/
 openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
 cd /var/www/namesend && composer install
 mv /root/.env /var/www/namesend/.env && mv /root/doctrine.yaml /var/www/namesend/config/packages/doctrine.yaml
