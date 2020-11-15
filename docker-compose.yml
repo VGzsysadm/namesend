@@ -17,7 +17,6 @@ services:
           - AZURE_CLIENT_ID=YOUR_CLIENT_ID
           - AZURE_CLIENT_SECRET=YOUR_SECRET
           - DOMAIN_NAME=domain.ltd
-          - DOMAIN_NAME=domain.ltd
           - PRIVACY_DATE=15-11-2020
           - PRIVACY_COMPANY=COMPANY LTD
           - PRIVACY_WEBSITE_DOMAIN=domain.ltd
