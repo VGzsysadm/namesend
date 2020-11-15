@@ -38,4 +38,9 @@ body {
   main {
     flex: 1 0 auto;
   }
-      
+  .dropdown-main{
+      width: 10em;
+  }
+  .dropdown-content {
+    top: 100% !important;
+  }

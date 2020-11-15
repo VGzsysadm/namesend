@@ -3,10 +3,12 @@
       <a href="#!" class="brand-logo"><img src="{{ asset('img/3326308b-c8a9-4eb4-8317-510bda55519d_200x200.png') }}"
                   alt="" class="responsive-img" style="width:60px;"></a>
       {% if app.User != null %}
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg></a>
       <ul class="right hide-on-med-and-down">
+        <li><a class='dropdown-activation btn dropdown-main' href='#' data-constrainwidth="false" data-target='dropdown-lang-desktop'>settings</a></li>
         <li><a href="#!">Logged as, {{app.user.email}}</a></li>
-        <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang-desktop'>settings</a></li>
       </ul>
       {% endif %}
     </div>
@@ -14,22 +16,28 @@
 {% if app.User != null %}
 <ul class="sidenav" id="mobile-demo">
     <li><a href="#!">Logged as, {{app.user.email}}</a></li>
-    <li><a class='dropdown-activation btn' href='#' data-target='dropdown-lang-mobile'>settings</a></li>
+    <li><a class='dropdown-activation btn' href='#' data-constrainwidth="false" data-target='dropdown-lang-mobile'>settings</a></li>
 </ul>
 {% endif %}
 <!-- Dropdown Structure -->
 <ul id='dropdown-lang-desktop' class='dropdown-content input-field'>
   <li class="divider" tabindex="-1"></li>
   <li><a href="#!">three</a></li>
-  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+  <li><a href="#!">four</a></li>
   <li class="divider" tabindex="-1"></li>
-  <li><a href="{{ path('app_logout') }}"><i class="material-icons">power_settings_new</i>Log out</a></li>
+  <li><a href="{{ path('app_logout') }}"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-closed" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>
+  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+</svg> Sign off</a></li>
 </ul>
 <!-- Dropdown Structure Mobile-->
 <ul id='dropdown-lang-mobile' class='dropdown-content input-field'>
   <li class="divider" tabindex="-1"></li>
   <li><a href="#!">three</a></li>
-  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+  <li><a href="#!">four</a></li>
   <li class="divider" tabindex="-1"></li>
-  <li><a href="{{ path('app_logout') }}"><i class="material-icons">power_settings_new</i>Log out</a></li>
+  <li><a href="{{ path('app_logout') }}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-closed" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>
+  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+</svg> Sign off</a></li>
 </ul>
