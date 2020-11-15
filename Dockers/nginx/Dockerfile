@@ -17,6 +17,7 @@ ARG PRIVACY_DATE
 ARG PRIVACY_COMPANY
 ARG PRIVACY_WEBSITE_DOMAIN
 
+COPY ./nginx.conf /etc/nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY ./start.sh /root
